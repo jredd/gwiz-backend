@@ -27,9 +27,6 @@ PROJECT_ROOT = BASE_DIR.parent
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
-                       "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-)
 
 
 # Application definition
@@ -71,6 +68,13 @@ DATABASES = {
 LOGIN_REDIRECT_URL = 'admin:index'
 
 TEMPLATE_DIRS = (str(PROJECT_ROOT / 'templates'),)
+# TEMPLATE_DIRS = ('templates')
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
+                       "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
 
 STATICFILES_DIRS = (
     str(PROJECT_ROOT / 'static'),
@@ -78,6 +82,8 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = str(PROJECT_ROOT.parent / 'static')
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'require.storage.OptimizedStaticFilesStorage'
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
