@@ -10,7 +10,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent
+PROJECT_ROOT = BASE_DIR.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -58,10 +61,18 @@ WSGI_APPLICATION = 'gwiz.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': str(PROJECT_ROOT / 'db.sqlite3'),
     }
 }
 
+LOGIN_REDIRECT_URL = 'admin:index'
+
+STATICFILES_DIRS = (
+    str(PROJECT_ROOT / 'static'),
+)
+
+STATIC_ROOT = str(PROJECT_ROOT.parent / 'static')
+STATIC_URL = '/static/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -79,7 +90,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
 
 
 try:
