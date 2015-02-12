@@ -67,6 +67,8 @@ DATABASES = {
 
 LOGIN_REDIRECT_URL = 'admin:index'
 
+TEMPLATE_DIRS = (str(PROJECT_ROOT / 'templates'),)
+
 STATICFILES_DIRS = (
     str(PROJECT_ROOT / 'static'),
 )
