@@ -1,13 +1,8 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Permission
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth import get_user_model
-from django.db.models.signals import post_save
 from django.utils.http import urlquote
-from django.dispatch import receiver
 from django.utils import timezone
 from django.db import models
-
-from rest_framework.authtoken.models import Token
 
 
 class CustomUserManager(BaseUserManager):
@@ -40,21 +35,6 @@ class CustomUserManager(BaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
         return self._create_user(email, password, True, True, **extra_fields)
 
-# class CustomeUser(AbstractBaseUser, PermissionsMixin):
-#     def create_user(self, email, passord=None):
-#         """
-#         Create and saves a User with the given email and password
-#         """
-#         if not email:
-#             raise ValueError('Users must have an email address')
-#
-#         user = self.model(
-#             email=self.normalize_email(email)
-#         )
-#
-#         user.set_password(passord)
-#         user.save(using=self._db)
-#         return user
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
@@ -78,10 +58,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
                                     help_text=_('Designates whether this user should be treated as active. '
                                                 'Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-    #token = Token.objects.create(user=)
 
     objects = CustomUserManager()
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 

@@ -2,13 +2,13 @@ from __future__ import absolute_import
 
 from rest_framework import serializers
 
-from .models import CustomUser
+from . import models
 
 
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = CustomUser
+        model = models.CustomUser
         fields = ('email',
                   'first_name',
                   'last_name',

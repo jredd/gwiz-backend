@@ -1,30 +1,22 @@
 from __future__ import absolute_import
-from json import dumps
 
 from django.contrib.auth.tokens import default_token_generator
 from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_protect
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import resolve_url
-from django.http import HttpResponse
 
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
 from rest_framework import generics, permissions
-from rest_framework.response import Response
-from rest_framework import status
 
-# from .serializers import UserSerializer
 from . import serializers
-from .forms import CustomUserRegistrationForm
-# from sister_core.sister_logger import log
-from .models import CustomUser
+from . import models
+from . import forms
 
 
 def redirect_index(request):
     return HttpResponseRedirect("/admin")
+
 
 @csrf_protect
 def register(request,
@@ -32,7 +24,7 @@ def register(request,
              template_name='registration/registration_form.html',
              email_template_name='registration/registration_email.html',
              subject_template_name='registration/registration_subject.txt',
-             registration_form=CustomUserRegistrationForm,
+             registration_form=forms.CustomUserRegistrationForm,
              token_generator=default_token_generator,
              post_registration_redirect=None,
              from_email=None,
@@ -88,21 +80,10 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         """Lists all the info for the given user"""
         user = self.kwargs['pk']
-        return CustomUser.objects.filter(email=user)
+        return models.CustomUser.objects.filter(email=user)
 
 
 class UsersList(generics.ListCreateAPIView):
     serializer_class = serializers.UserSerializer
     permission_classes = (permissions.IsAuthenticated,)
-    queryset = CustomUser.objects.all()
-
-
-class ObtainToken(ObtainAuthToken):
-
-    def post(self, request):
-        serializer = self.serializer_class(data=request.DATA)
-        if serializer.is_valid():
-            token, created = Token.objects.get_or_create(user=serializer.object['user'])
-            print '{} just attempted to retrieve a token'.format(serializer.object['user'])
-            return Response({'token': token.key})
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = models.CustomUser.objects.all()
