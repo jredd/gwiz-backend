@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
-
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import get_current_site
@@ -83,8 +81,6 @@ class CustomUserChangeForm(UserChangeForm):
     def __init__(self, *args, **kargs):
         super(CustomUserChangeForm, self).__init__(*args, **kargs)
         del self.fields['username']
-
-    password = ReadOnlyPasswordHashField()
 
     class Meta:
         model = CustomUser
