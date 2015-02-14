@@ -29,9 +29,10 @@ urlpatterns = patterns('',
     url(r'^registration/done/$', registration_done, name='register_done'),
 
     # reset user password urls
+
     url(r'^user/password/reset/$',
         auth_views.password_reset,
-        {'post_reset_redirect' : '/user/password/reset/done/'},
+        {'post_reset_redirect': '/user/password/reset/done/'},
         name="password_reset"),
     (r'^user/password/reset/done/$', auth_views.password_reset_done),
     (r'^user/password/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
@@ -48,4 +49,7 @@ urlpatterns = patterns('',
     url(r'^user/password/change/done/$',
         login_required(auth_views.password_change_done),
         name='password_change_done'),
+
+    url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+    url(r'^api-token-refresh/', 'rest_framework_jwt.views.refresh_jwt_token'),
 )
