@@ -6,13 +6,13 @@
 
 {% block content %}
     <div class="row top-buffer">
-        <div class="col-9 auto-margin no-float panel panel-default panel_authentication">
+        <div class="col-10 auto-margin no-float panel panel-default panel_authentication">
             <form class="" method="post" action="{% url 'django.contrib.auth.views.login' %}">
                 {% csrf_token %}
                 <fieldset>
-                    <legend class="push_bottom_30">Gwiz Login</legend>
+                    <legend class="push_bottom_15">Gwiz Login</legend>
                     {% if form.errors %}
-                        <small class="login_failure">Your username and password didn't match. Please try again.</small>
+                        <small class="login_failure ">Your username or password didn't match. Please try again.</small>
                     {% endif %}
                     <div class="form-group">
                          <label>EMAIL</label>

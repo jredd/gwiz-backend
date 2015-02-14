@@ -116,6 +116,7 @@ fieldset {
   .panel_authentication legend {
     font-size: 2em; }
   .panel_authentication .login_failure {
+    color: #991c1f;
     -webkit-animation: fadi 2s 1;
     -moz-animation: fadi 2s 1; }
 

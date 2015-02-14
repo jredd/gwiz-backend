@@ -2,14 +2,11 @@ $charcoal: #2c2c2c;
 $charcoal_light: lighten($charcoal, 1.5%);
 $dark_charcoal: darken($charcoal, 8%);
 $red: #991c1f;
-$red_lighten: lighten($red, 15%);;
 $white: #f8f8f8;
 $white_light: lighten($white, 3%);;
 $white_med_dark: darken($white, 8%);;
 $white_dark: darken($white, 12%);;
-$grey: #bfbfbf;
-$grey_med_dark: #8c8c8c;
-$grey_dark: #595959;
+
 
 *{
   margin: 0;
@@ -154,7 +151,7 @@ border: 0;
 
   }
   .login_failure {
-//    color: $red_lighten;
+    color: $red;
     -webkit-animation: fadi 2s 1;
     -moz-animation: fadi 2s 1;
 }
