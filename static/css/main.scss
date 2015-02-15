@@ -141,7 +141,9 @@ border: 0;
     color: $charcoal;
   }
   button {
-    width: 100px;
+    width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content;    /* Firefox/Gecko */
+    width: -webkit-max-content; /* Chrome */
   }
   label {
     font-size: 1.25em;
@@ -155,17 +157,19 @@ border: 0;
     -webkit-animation: fadi 2s 1;
     -moz-animation: fadi 2s 1;
 }
-//  .error_list ul, .error_list {
-//    list-style: none;
-//    color: red;
+  .error_list ul {
+    list-style: none;
+    color: $red;
 //    margin-top: -15px;
-//    -webkit-animation: fadi 1s 1;
-//    -moz-animation: fadi 1s 1;
-//  }
+    -webkit-animation: fadi 1s 1;
+    -moz-animation: fadi 1s 1;
+    margin-bottom: 15px;
+//    display: block;
+  }
 }
 //.error_list {
 //    list-style: none;
-////    color: $red_lighten;
+//    color: $red;
 //    margin-top: -15px;
 //    -webkit-animation: fadi 1s 1;
 //    -moz-animation: fadi 1s 1;
@@ -192,7 +196,7 @@ border: 0;
   border-radius: 4px;
 }
 
-.btn-grey {
+.btn-white {
   background: $white;
   color: $charcoal;
 //  box-shadow: 0 5px 0 $white_med_dark;
