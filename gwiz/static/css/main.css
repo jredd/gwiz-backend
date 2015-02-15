@@ -81,13 +81,11 @@ main {
 @-webkit-keyframes fadi {
   0% {
     opacity: 0; }
-
   100% {
     opacity: 1; } }
 @-moz-keyframes fadi {
   0% {
     opacity: 0; }
-
   100% {
     opacity: 1; } }
 .panel {
@@ -110,7 +108,12 @@ fieldset {
   .panel_authentication a {
     color: #2c2c2c; }
   .panel_authentication button {
-    width: 100px; }
+    width: intrinsic;
+    /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content;
+    /* Firefox/Gecko */
+    width: -webkit-max-content;
+    /* Chrome */ }
   .panel_authentication label {
     font-size: 1.25em; }
   .panel_authentication legend {
@@ -119,6 +122,12 @@ fieldset {
     color: #991c1f;
     -webkit-animation: fadi 2s 1;
     -moz-animation: fadi 2s 1; }
+  .panel_authentication .error_list ul {
+    list-style: none;
+    color: #991c1f;
+    -webkit-animation: fadi 1s 1;
+    -moz-animation: fadi 1s 1;
+    margin-bottom: 15px; }
 
 .btn {
   display: inline-block;
@@ -140,12 +149,14 @@ fieldset {
   border: 2px #2c2c2c solid;
   border-radius: 4px; }
 
-.btn-grey {
+.btn-white {
   background: #f8f8f8;
   color: #2c2c2c; }
-  .btn-grey:hover {
+  .btn-white:hover {
     background: #2c2c2c;
     color: #f8f8f8; }
-  .btn-grey:active {
+  .btn-white:active {
     background: #f8f8f8;
     color: #303030; }
+
+/*# sourceMappingURL=main.css.map */

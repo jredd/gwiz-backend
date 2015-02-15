@@ -102,7 +102,7 @@ class CustomUserChangeForm(UserChangeForm):
              ):
         user = super(UserChangeForm, self).save(commit=False)
         email_receiver = user.email
-        print Site.objects.get_current()
+        print(Site.objects.get_current())
         if commit:
             user.save()
         if not domain_override:

@@ -7,7 +7,7 @@
 {% block content %}
     <div class="row top-buffer">
         <div class="col-10 auto-margin no-float panel panel-default panel_authentication">
-            <form class="" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+            <form class="" method="post" action="{% url 'user_auth:login' %}">
                 {% csrf_token %}
                 <fieldset>
                     <legend class="push_bottom_15">Gwiz Login</legend>
@@ -26,12 +26,12 @@
                             <input type="password" class="form-control input-lg" id="id_password" name="password" placeholder="Password" required/>
                         </p>
                         <small class="login_link">
-                            Forgot your <a href="{% url 'password_reset' %}">password?</a>
+                            Forgot your <a href="{% url 'user_auth:password_reset' %}">password?</a>
                         </small>
                     </div>
-                    <button type="submit" class="btn btn-grey auto-margin no-float">LOGIN</button>
+                    <button type="submit" class="btn btn-white auto-margin no-float">LOGIN</button>
                 </fieldset>
             </form>
         </div><!-- //col -->
-    </div>
+    </div><!-- //row -->
 {% endblock %}

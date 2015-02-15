@@ -129,6 +129,6 @@ USE_TZ = True
 
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except:
     pass
