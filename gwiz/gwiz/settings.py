@@ -44,11 +44,14 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 
     'rest_framework',
+    'corsheaders',
 
     'user_auth',
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
